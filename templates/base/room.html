@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/room.css' %}">
+{% endblock head %}
+
+{% block content %}
+<div class="room-container">
+   <div class="room">
+      <section class="info-section">
+         <p class="room-meta">
+            <span class="room-host">@{{room.host}}</span>
+            <span class="room-created">{{room.created|timesince}} ago</span>
+         </p>
+         <h3 class="room-title"> {{ room.name }}</h3>
+         <p class="room-description">{{ room.description }}</p>
+      </section>
+      
+      <div class="conversations">
+         <p class="section-title">Conversations</p>
+         {% if comments %}
+            <div class="comments-section">
+               {% for comment in comments %}
+                  <div class="comment {% if comment.user == request.user %}self{% else %}non-self{% endif %}">
+                     <p class="comment-header">
+                        <span class="user">@{{ comment.user }}</span><span class="time">{{comment.updated|timesince}} ago</span>
+                     </p>
+                     <p class="msg light-text">{{comment.body}}</p>
+                  </div>
+               {% endfor %}
+            </div>
+         {% else %}
+            <p class="no-message light-text small-text p5">No Messages Yet!</p>
+         {% endif %}
+   </div>
+      {%if request.user.is_authenticated %}
+      <section class="add-comment-section">
+         <form action="" method="post" class="form add-comment-form">
+            {% csrf_token %}
+            <div class="form-control">
+               <input type="text" name="body" id="comment-body" placeholder="Enter your message here..." required autocomplete="off">
+            </div>
+         </form>
+      </section>
+      {% else %}
+         <small class="light-text">Signin or Signup to join the conversation</small>
+      {% endif %}
+   </div>
+   <div class="participants">
+      <h3 class="contrast-text-2 m0 p5">Participants <span>({{ participants.count }})</span></h3>
+      <div class="list-participants link-text small-text m0 p5">
+         {% for participant in participants %}
+         <p class="participant">@{{participant.username}}</p>
+         {% endfor %}
+      </div>
+   </div>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque facere quisquam, sapiente quae qui ullam necessitatibus sit mollitia ad fugit harum accusamus voluptatum. Repellat necessitatibus vitae inventore provident fugiat non quo, ex aut assumenda vel error commodi atque, voluptatibus incidunt dicta ipsa sequi quod tenetur! Nihil vel laudantium harum aspernatur necessitatibus ducimus, nemo nostrum et natus? Eaque, architecto assumenda? Ea, temporibus quaerat, reiciendis veritatis a rerum suscipit reprehenderit officia mollitia enim perferendis quisquam repudiandae dolore harum quidem nulla ducimus possimus! Doloremque maxime impedit ipsa nihil unde corrupti id eius iusto a magni, tenetur aliquid? Odit beatae sunt iusto error dolorem!</p>
+</div>
+
+{% endblock content %}

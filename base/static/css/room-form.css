@@ -1,0 +1,11 @@
+.form-action {
+  max-width: 200px;
+}
+
+.room-form {
+  width: 50%;
+}
+
+.form-control > *:not(label) {
+  font-size: 0.9rem;
+}

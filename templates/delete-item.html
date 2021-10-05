@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="delete-confimation-container">
+   <form action="" method="POST">
+    {% csrf_token %}
+    <p>Are you sure want to delete '{{ item }}'</p>
+    <button type="submit">Confirm</button>
+    <a href="{{ request.META.HTTP_REFERER }}" class="btn">Back</a>
+
+   </form>
+</div>
+
+{% endblock content %}

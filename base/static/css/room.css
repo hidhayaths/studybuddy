@@ -1,0 +1,152 @@
+.room-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+}
+
+.room,
+.participants {
+  background-color: var(--primary-bg-hue-2);
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.room-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  font-size: 0.7rem;
+  margin: 0;
+  padding-top: 5px;
+}
+
+.room-host {
+  color: var(--dark-bg-link-color);
+}
+
+.room-created {
+  color: var(--subtle-light-text-color);
+}
+
+.room-title {
+  margin: 5px 0px;
+  color: var(--primary-contrast-color);
+}
+
+.room-description {
+  margin-top: 5px;
+  color: var(--primary-light-color);
+  font-size: 0.9em;
+}
+
+.conversations {
+  background-color: var(--main-bg);
+  border-radius: 10px;
+}
+
+.conversations > .section-title {
+  padding: 10px;
+  margin: 0px;
+  margin-right: 20px;
+  color: var(--secondary-light-color);
+}
+
+.comments-section {
+  /* background-color: var(--primary-bg-hue-2); */
+  padding: 10px;
+  border-radius: 10px;
+  height: 45vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.comment {
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-left: 2px solid var(--dark-bg-link-color);
+  /* border-radius: 10px; */
+}
+
+.comment.self {
+  border-left: 2px solid var(--secondary-light-color);
+}
+
+.comment > .msg {
+  margin: 0;
+  padding: 10px;
+
+  font-size: 0.9em;
+  position: relative;
+  word-wrap: break-word;
+  background-color: rgba(0, 0, 0, 0.3);
+  min-height: 50px;
+}
+
+.comment-header {
+  margin: 0;
+  padding-left: 10px;
+  background-color: rgba(0, 0, 10, 0.2);
+}
+
+.comment-header > .user {
+  color: var(--dark-bg-link-color);
+  font-size: 0.65em;
+  margin-right: 5px;
+}
+
+.comment-header > .time {
+  color: var(--subtle-light-text-color);
+  font-size: 0.65em;
+}
+
+.add-comment-section {
+  margin: 20px 0px;
+  width: 100%;
+}
+
+.add-comment-section > .form,
+.add-comment-section .form-control,
+.add-comment-section .form-control > input {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.add-comment-section .form-control > input {
+  padding: 10px;
+  font-size: 0.9rem;
+  background-color: var(--subtle-text-color);
+  color: #000;
+}
+
+.add-comment-section input::placeholder {
+  color: #111;
+}
+
+.comments-section::-webkit-scrollbar {
+  width: 0.6em;
+}
+
+.comments-section::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px transparent;
+  border-radius: 3px;
+  padding: 1px;
+}
+
+.comments-section:hover::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px #8882824d;
+}
+
+.comments-section::-webkit-scrollbar-track:hover {
+  cursor: pointer;
+}
+
+.comments-section::-webkit-scrollbar-thumb {
+  width: 3px;
+  background-color: var(--dark-hue-3);
+  border-radius: 5px;
+}

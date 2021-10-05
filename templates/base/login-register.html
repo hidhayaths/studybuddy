@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock head %}
+
+{% block content %}
+    {% if page == "login" %}
+        <div class="login-container">    
+            <form action="" method="post" class="form login-form" autocomplete="off">
+                <p class="title light-text">Sign in</p>
+                {% csrf_token %}
+                <div class="form-control">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="username" class="form-input" required>
+                </div>
+                <div class="form-control">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="password" class="form-input" required>
+                </div>
+                <button type="submit" class="btn form-action">Sign in</button>
+                <p class="redirect-link">
+                    <span>Not a Registered User ?</span>
+                    <a href="{% url 'register' %}">Signup</a> 
+                </p>
+            </form>
+            
+        </div>
+    {% else %}
+        <div class="register-container">
+            <form action="" method="post" class="form register-form" autocomplete="off">
+                <p class="title light-text">Sign up</p>
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-control">
+                        {{ field.errors }}
+                        {{ field.label_tag }}
+                        <!-- <label for="{{ field.id_for_label}}">{{ field.label }}</label> -->
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn form-action">Sign up</button>
+                <p class="redirect-link">
+                    <span>Already a User ?</span>
+                    <a href="{% url 'login' %}">Sign in</a> 
+                </p>
+            </form>
+        </div>
+    {% endif %}
+{% endblock content %}

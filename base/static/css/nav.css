@@ -1,0 +1,82 @@
+/* nav bar styles */
+
+header {
+  background-color: var(--header-bg);
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-bar > * {
+  flex: 1;
+}
+
+.nav {
+  list-style-type: none;
+}
+
+.nav {
+  display: none;
+}
+
+.nav-item {
+  padding: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.logo,
+.nav-link {
+  text-decoration: none;
+}
+
+.logo {
+  color: var(--primary-light-color);
+  font-size: 1.2rem;
+}
+
+.nav-link {
+  padding: 10px 20px;
+  color: var(--dark-bg-link-color);
+  display: block;
+  font-size: 0.9rem;
+}
+
+.user-name {
+  color: var(--secondary-light-color);
+  font-size: 0.8em;
+}
+
+.nav-link:hover {
+  color: var(--dark-bg-link-hover-color);
+  background-color: var(--primary-bg-hue);
+}
+
+.search-container {
+  margin: 0;
+  padding: 0;
+  flex: 2;
+  background-color: transparent;
+}
+
+.search-input {
+  background-color: var(--main-bg-hue-1);
+  width: 100%;
+  padding: 10px;
+  padding-left: 25px;
+  outline: none;
+  border-radius: 35px;
+  border: 0;
+  color: var(--subtle-light-text-color);
+}
+
+@media (min-width: 698px) {
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,16 @@
+.login-container,
+.register-container {
+  display: grid;
+  place-items: center;
+
+  /* margin: 0px auto; */
+}
+
+.form {
+  align-items: center;
+  height: 400px;
+}
+
+.register-container .helptext {
+  display: none;
+}

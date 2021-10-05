@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/room-form.css' %}">
+{% endblock head %}
+
+{% block content %}
+
+<div class="room-form-container">
+    <form action="" class="room-form form" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-control">
+            {{ field.errors }}
+            {{ field.label_tag }}
+            <!-- <label for="{{ field.id_for_label }}">{{ field.label }}</label> -->
+            {{ field }}
+            </div>
+        {% endfor %}
+
+        <!-- <div class="form-control">
+            {{ form.name.errors }}
+            <label for="{{ form.name.id_for_label }}">Name</label>
+            {{ form.name }}
+        </div> -->
+        
+        <button type="submit" class="btn form-action">Save</button>
+    </form>
+</div>
+
+{% endblock content %}
