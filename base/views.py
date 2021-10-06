@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.db.models import Q
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -63,15 +63,15 @@ def home(request):
     q =  request.GET.get('q') if request.GET.get('q') != None else ''
 
     topics = Topic.objects.all()
-
+    activities = Message.objects.all()[:10]
     rooms = Room.objects.filter(
                 Q(topic__name__icontains = q) |
                 Q(name__icontains = q) |
-                Q(description__icontains = q)
+                Q(description__icontains = q) 
             )
 
     room_count = rooms.count()
-    context = {'rooms':rooms,'topics':topics,'room_count':room_count}
+    context = {'rooms':rooms,'topics':topics,'room_count':room_count,'activities':activities}
     return render(request,'base/index.html',context)
 
 def room(request,slug):
@@ -85,7 +85,7 @@ def room(request,slug):
         return redirect('room',slug=room.id)
     
     participants = room.participants.all()
-    comments = room.message_set.all().order_by('-updated')
+    comments = room.message_set.all() #.order_by('-updated')
     context = {'room':room,'comments':comments,'participants':participants}
 
     return render(request,'base/room.html',context)
@@ -136,3 +136,33 @@ def deleteRoom(request,slug):
         return redirect('home')
     context = {'item':room}
     return render(request,'delete-item.html',context)
+
+@login_required(login_url='login')
+def deleteMessage(request,slug):
+    message = Message.objects.get(id=slug)
+
+    if request.user != message.user:
+        return HttpResponse('You are not authorized')
+    
+    if request.method == 'POST':
+        message.delete()
+        return redirect('room',slug=message.room.id)
+    
+    context = {'item':message}
+
+    return render(request,'delete-item.html',context)
+
+def userProfile(request,user_id):
+    user = User.objects.get(id=user_id)
+    rooms = user.room_set.all()
+    activities = user.message_set.all()[:10]
+    topics = Topic.objects.all()
+    context = {
+        'user':user,
+        'rooms':rooms,
+        'activities':activities,
+        'topics':topics
+    }
+
+    return render(request,'base/user-profile.html',context)
+

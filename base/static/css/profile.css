@@ -1,0 +1,15 @@
+.cover {
+  display: grid;
+  place-items: center;
+  padding: 10px 20px;
+}
+
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 30px;
+}
+
+.profile-container h4.title {
+  font-weight: 400;
+}

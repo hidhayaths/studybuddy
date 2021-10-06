@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock head %}
+
+{% block content %}
+
+<div class="profile">
+    <div class="cover">
+        <h2 class="light-text">{{user.username}}</h2>
+    </div>
+    <div class="profile-container">
+        {% include 'base/components/topics.html' %}
+        <section class="rooms-container">
+            <h4 class="title light-text-2 m0 p5" >Rooms</h4>
+            {% include 'base/components/feed.html' %}
+        </section>
+        {% include 'base/components/activities.html' %}
+    </div>
+</div>
+
+{% endblock %}

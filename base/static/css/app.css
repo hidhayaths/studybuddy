@@ -48,7 +48,7 @@ a {
 }
 
 .btn {
-  display: block;
+  /* display: block; */
   padding: 5px 10px;
   text-align: center;
   transition: all 0.25s ease-in-out;
@@ -81,16 +81,41 @@ input {
   color: var(--dark-bg-link-color);
 }
 
-.small-text {
+.light-text-2 {
+  color: var(--subtle-light-text-color);
+}
+
+.md-text {
+  font-size: 0.9em;
+}
+
+.small-text,
+.sm-text {
   font-size: 0.8rem;
+}
+
+.xs-text {
+  font-size: 0.7em;
+}
+
+.m-left-auto {
+  margin-left: auto !important;
 }
 
 .m0 {
   margin: 0;
 }
 
+.m5-tb {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .p5 {
   padding: 5px;
+}
+.p10 {
+  padding: 10px;
 }
 
 .btn-primary {

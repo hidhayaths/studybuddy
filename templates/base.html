@@ -11,6 +11,9 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/app.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/topics.css' %}">
+    <link rel="stylesheet" href="{% static 'css/feeds.css' %}">
+    <link rel="stylesheet" href="{% static 'css/activities.css' %}">
 
 
     {% block head %}
@@ -22,11 +25,6 @@
     <header class="app-header">
         {% include 'nav.html' %}
     </header>
-    <!-- {% if request.user.is_authenticated %}
-        <div class="user-info">
-            <span>Welcome </span><span class="user-name">{{ request.user.username }}</span>
-        </div>
-    {% endif %} -->
     <main class="app-content">
       
         {% if messages %}

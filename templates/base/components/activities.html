@@ -1,0 +1,27 @@
+<aside class="activities-container p5">
+    <h4 class="title">Recent Activities</h4>
+    <div class="activities">
+        {% for activity in activities %}
+            <div class="activity p10 m5-tb">
+                <div class="activity-header">
+                    <a class="user link-text xs-text p5" href="{% url 'user-profile' activity.user.id %}">@{{activity.user.username}}</a>
+                    <span class="timesince light-text xs-text p5">{{activity.created|timesince}} ago</span>
+                </div>
+                <div class="activity-content">
+                    <span class="room-info light-text small-text p5">
+                        replied to "<a href="{% url 'room' activity.room.id %}" class="light-text">{{ activity.room }}</a>"
+                    </span>
+                    <span class="activity-message p5 md-text">
+                        {{ activity}}
+                    </span>
+                </div>
+                {% if request.user == activity.user %}
+                <div class="activity-action">
+                    <a href="{% url 'delete-message' activity.id %}" class="contrast-text-2 xs-text p5">delete</a>
+                </div>
+                {% endif %}
+            </div>
+        {% endfor%}
+    </div>
+    
+</aside>

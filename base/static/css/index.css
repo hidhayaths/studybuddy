@@ -2,16 +2,12 @@
 
 .home-container {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 2fr 1fr;
   gap: 30px;
 }
 
 .home-container > * {
   padding-top: 20px;
-}
-
-.side-nav {
-  height: 100%;
 }
 
 .rooms-header {
@@ -32,113 +28,4 @@
 
 .btn-new {
   background-color: var(--primary-bg-hue);
-}
-
-.rooms > * {
-  margin-top: 25px;
-}
-
-.rooms > a {
-  margin-top: 0px;
-}
-
-.room {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--primary-bg-hue);
-  color: var(--secondary-light-color);
-  width: auto;
-  gap: 5px;
-}
-
-.room-name {
-  color: var(--dark-bg-link-color);
-}
-
-.room-host,
-.room-description,
-.room-topic {
-  font-size: 0.8rem;
-}
-
-.room-actions {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.room > * {
-  padding: 5px 15px;
-}
-
-.room-content > * {
-  display: block;
-}
-
-.room-description {
-  color: var(--subtle-light-text-color);
-  font-size: 0.75em;
-  margin-top: 3px;
-}
-
-.room-topic {
-  color: var(--subtle-light-text-color);
-  border-radius: 5px;
-  background-color: var(--primary-bg-hue-2);
-  width: fit-content;
-  padding: 8px;
-  margin: 0;
-  font-size: 0.8rem;
-}
-
-.room-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--primary-bg-hue-2);
-  padding: 10px 15px;
-}
-
-.room-footer {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-}
-
-.room-btn {
-  text-transform: capitalize;
-  color: var(--subtle-link-color);
-  font-size: 0.7rem;
-}
-
-/* .topics-container {
-  margin-top: 20px;
-} */
-
-.topics-container {
-  background-color: var(--primary-bg);
-}
-
-.topics-container > .title {
-  color: var(--subtle-light-text-color);
-  padding: 5px 5px 5px 20px;
-  margin-top: 0;
-  font-weight: 400;
-}
-
-.topics {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  /* margin-right: 30px; */
-}
-
-.link-topic {
-  display: block;
-  padding: 5px 20px;
-  color: var(--secondary-contrast-color);
-}
-
-.link-topic:hover {
-  background-color: var(--primary-bg-hue-2);
 }

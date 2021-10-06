@@ -7,15 +7,7 @@
 
 {% block content %}
     <div class="home-container">
-        <aside class="side-nav topics-container">
-            <h4 class="title">Browse Topics</h4>
-            <ul class="topics">
-                <a href="{% url 'home' %}" class="link-topic">All</a>
-                {% for topic in topics %}
-                    <li class="topic"><a href="{% url 'home' %}?q={{ topic.name }}" class="link-topic">{{ topic.name }}</a></li>
-                {% endfor %}
-            </ul>
-        </aside>
+        {% include 'base/components/topics.html' %}
         <section class="rooms-container">
             <div class="rooms-header">
                 <p class="room_count"><span>{{ room_count }}</span> Rooms available</p>
@@ -23,31 +15,8 @@
                     <a href="{% url 'create-room' %}" class="btn light-text btn-new">New Room</a>
                 {% endif %}
             </div>
-            <section class="rooms">
-                {% for room in rooms %}
-                    <article class="room">
-                        <div class="room-header">
-                            <span class="room-host">@{{room.host.username}}</span>
-                            {% if request.user == room.host %}
-                                <div class="room-actions">
-                                    <a href="{% url 'update-room' room.id %}" class="room-btn">edit</a>
-                                    <a href="{% url 'delete-room' room.id %}" class="room-btn">delete</a>
-                                </div>
-                            {% endif %}
-                        </div>
-                        
-                        <div class="room-content">
-                            <a href="{% url 'room' room.id %}" class="room-name">
-                                {{ room.name }}
-                            </a>
-                            <span class="room-description">{{ room.description }}</span>
-                        </div>
-                        <div class="room-footer">
-                            <p class="room-topic">{{ room.topic.name }}</p>
-                        </div>
-                    </article>
-                {% endfor %}
-            </section>
+            {% include 'base/components/feed.html' %}
         </section>
+        {% include 'base/components/activities.html' %}
     </div>
 {% endblock content %}

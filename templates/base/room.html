@@ -25,6 +25,9 @@
                   <div class="comment {% if comment.user == request.user %}self{% else %}non-self{% endif %}">
                      <p class="comment-header">
                         <span class="user">@{{ comment.user }}</span><span class="time">{{comment.updated|timesince}} ago</span>
+                        {% if request.user == comment.user %}
+                           <a href="{% url 'delete-message' comment.id %}" class="xs-text m0 p5 m-left-auto contrast-text-2">Delete</a>
+                        {% endif %}
                      </p>
                      <p class="msg light-text">{{comment.body}}</p>
                   </div>
@@ -49,7 +52,7 @@
    </div>
    <div class="participants">
       <h3 class="contrast-text-2 m0 p5">Participants <span>({{ participants.count }})</span></h3>
-      <div class="list-participants link-text small-text m0 p5">
+      <div class="list-participants link-text">
          {% for participant in participants %}
          <p class="participant">@{{participant.username}}</p>
          {% endfor %}

@@ -1,0 +1,27 @@
+.topics-container {
+  background-color: var(--primary-bg);
+}
+
+.topics-container > .title {
+  color: var(--subtle-light-text-color);
+  padding: 5px 5px 5px 20px;
+  margin-top: 0;
+  font-weight: 400;
+}
+
+.topics {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /* margin-right: 30px; */
+}
+
+.link-topic {
+  display: block;
+  padding: 5px 20px;
+  color: var(--secondary-contrast-color);
+}
+
+.link-topic:hover {
+  background-color: var(--primary-bg-hue-2);
+}
