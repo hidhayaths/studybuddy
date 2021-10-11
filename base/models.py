@@ -40,4 +40,14 @@ class Message(models.Model):
     def __str__(self):
         return self.body[0:50]
 
+class Profile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    name = models.CharField(max_length=100,null=True)
+    bio = models.TextField(null=True,blank=True)
+    avatar = models.ImageField(null=True,default="avatar.png")
+    updated= models.DateTimeField(auto_now=True)
+    created=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
 

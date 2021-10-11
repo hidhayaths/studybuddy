@@ -13,3 +13,20 @@
 .profile-container h4.title {
   font-weight: 400;
 }
+
+.user__profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.user__profile > .avatar {
+  height: 120px;
+  width: 120px;
+}
+
+.user_display_name {
+  font-size: 0.9rem;
+}

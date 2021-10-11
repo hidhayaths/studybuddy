@@ -230,6 +230,22 @@ input {
   margin-left: 5px;
 }
 
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-sm {
+  width: 25px;
+  height: 25px;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
 @media (min-width: 769px) {
   .app-header,
   .user-info,

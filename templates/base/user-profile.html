@@ -9,7 +9,16 @@
 
 <div class="profile">
     <div class="cover">
-        <h2 class="light-text">{{user.username}}</h2>
+        
+        <div class="user__profile">
+            <img src="{{user.profile.avatar.url}}" alt="{{user.profile.name}}" class="avatar">
+            <h3 class="user_display_name light-text m0 p5">{{user.profile.name}}</h3>
+        </div>
+        {% if request.user == user %}
+        <a href="{% url 'update-profile' %}" class="light-text small-text m0 link-text">@{{user.username}}</a>
+        {% else %}
+        <h2 class="light-text small-text m0 link-text">@{{user.username}}</h2>
+        {% endif %}
     </div>
     <div class="profile-container">
         {% include 'base/components/topics.html' %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="update-profile profile-form-container">
+    <form action="" class="profile-form form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-control">
+            {{ field.errors }}
+            {{ field.label_tag }}
+            {{ field }}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn form-action">Save</button>
+    </form>
+</section>
+
+{% endblock content %}

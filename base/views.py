@@ -8,8 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 
-from .models import Message, Room , Topic
-from .forms import RoomForm
+from .models import Message, Room , Topic , Profile
+from .forms import RoomForm , ProfileForm
 # Create your views here.
 
 def appLogin(request):
@@ -50,6 +50,7 @@ def appRegisterUser(request):
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
+            Profile.objects.create(user = user, name = user.username)
             login(request,user)
             return redirect('home')
         else:
@@ -166,3 +167,26 @@ def userProfile(request,user_id):
 
     return render(request,'base/user-profile.html',context)
 
+@login_required(login_url='login')
+def updateProfile(request):
+
+    user_profile = request.user.profile
+
+    if user_profile is None:
+        return HttpResponse('Profile could not be rerieved')
+    
+    form = ProfileForm(instance = user_profile)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST,request.FILES ,instance=user_profile)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            #profile.avatar = request.POST.get('avatar')
+            profile.save()
+            return redirect('user-profile',user_id=request.user.id)
+        else:
+            messages.error(request,form.errors.as_ul)
+    
+    context = {'form':form}
+
+    return render(request,'base/user-profile-edit.html',context)

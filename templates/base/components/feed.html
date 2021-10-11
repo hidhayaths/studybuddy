@@ -2,8 +2,13 @@
     {% for room in rooms %}
         <article class="room">
             <div class="room-header">
-                <a href="{% url 'user-profile' room.host.id %}" class="room-host">@{{room.host.username}}</a>
-                {% if request.user == room.host %}
+                <img src="{{room.host.profile.avatar.url}}" alt="{{room.host.username}}" class="avatar">
+                <a href="{% url 'user-profile' room.host.id %}" class="room-host">
+                    <span class="light-text small-text user-name">{{room.host.profile.name}}</span>
+                    <span class="link-text xs-text user-handle">@{{room.host.username}}</span>
+                </a>
+                
+                {% if request.user == room.host and '/profile/' in request.path %}
                     <div class="room-actions">
                         <a href="{% url 'update-room' room.id %}" class="room-btn">edit</a>
                         <a href="{% url 'delete-room' room.id %}" class="room-btn">delete</a>
